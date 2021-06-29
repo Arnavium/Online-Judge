@@ -8,31 +8,3 @@
     border-radius: 1px;
     font-size: 15px;
 }
-.problems {
-    display: flex; 
-    flex-direction: column;
-}
-.problems .card-body{
-    transition: transform 500ms;
-}
-.problems .card-body:hover{
-    color: white !important;
-    background-color: #EF8354 !important;
-    transform: translateY(-10px);
-}
-.btn2{
-    /* border-radius: 4px; */
-    text-transform: uppercase;
-    font-weight: bold;
-    text-align: center;
-    background-color: #EF8354;
-    opacity: 1;
-    padding: 20px 46px;
-    float: right;
-}
-.btn2:hover{
-    /* border: 2px solid #EF8354; */
-    background-color: white;
-    color: #EF8354;
-    transition: all 1s ease;
-}

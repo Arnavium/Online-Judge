@@ -1,11 +1,15 @@
 </main>
 <div class="sidebar">
-  <ul class="sidebar-list">
-    <li class="sidebar-item"><a href="/home" class="sidebar-anchor">HOME</a></li>
-    <li class="sidebar-item"><a href="/problems" class="sidebar-anchor">PROBLEMS</a></li>
-    <li class="sidebar-item"><a href="#" class="sidebar-anchor">USER</a></li>
-    <li class="sidebar-item"><a href="#" class="sidebar-anchor">LOGOUT</a></li>
-  </ul>
+    <ul class="sidebar-list">
+        <li class="sidebar-item"><a href="/home" class="sidebar-anchor">HOME</a></li>
+        <li class="sidebar-item"><a href="/problems" class="sidebar-anchor">PROBLEMS</a></li>
+        <%if(currentUser != null){%>
+            <li class="sidebar-item"><a href="#" class="sidebar-anchor"><%=currentUser.username%></a></li>
+            <li class="sidebar-item"><a href="/logout" class="sidebar-anchor">LOGOUT</a></li>
+        <%}else{%>
+            <li class="sidebar-item"><a href="/register_U" class="sidebar-anchor">REGISTER/LOGIN</a></li>
+        <%}%>
+    </ul>
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
