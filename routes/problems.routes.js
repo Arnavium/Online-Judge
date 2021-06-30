@@ -6,11 +6,27 @@ const userController = require("../controllers/user");
 const run = require("../code_compiler/compile_code").run;
 
 router.get("/", function(req, res){
-    res.render("problems");
+    let filter = {};
+    let user = req.user;
+    questionController.getAll(filter).then((questions)=>{
+        if(req.user != null)
+            res.render("problems", {questions: questions, solved:user.solved});
+        else
+            res.render("problems", {questions: questions});
+    }).catch((err)=>{
+        console.log(err);
+        res.redirect("back");
+    })
 })
 
 router.get("/:id", function(req, res){
-    res.render("problem");
+    let filter = {_id: req.params.id}
+    questionController.getOne(filter).then((question)=>{
+        res.render("problem", {question: question});
+    }).catch((err)=>{
+        console.log(err);
+        res.redirect("back");
+    })  
 })
 
 router.post("/:id/submit", middlewares.isLoggedIn, function(req, res){
@@ -21,7 +37,6 @@ router.post("/:id/submit", middlewares.isLoggedIn, function(req, res){
             var question_id = question._id;
             var submission = {question_id, code, verdict};
             userController.addSubmission(submission, req.user).then((user)=>{
-                console.log(user);
                 if(verdict[0] == 'W')
                     req.flash("error", verdict);
                 else

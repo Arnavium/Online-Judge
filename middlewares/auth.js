@@ -5,14 +5,12 @@ middlewares.isLoggedIn = function(req, res, next){
         return next();
     }
     req.flash("error", "Please! Login First.")
-    res.redirect("/login");
+    return res.redirect("/login");
 }
 
 middlewares.isLogged = function(req, res, next){
     if(req.isAuthenticated()){
-        console.log("err")
-        req.flash("error", "Please! Logout First.")
-        res.redirect("/profile")
+        return res.redirect("/home")
     }
     return next();
 }
