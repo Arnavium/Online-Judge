@@ -13,7 +13,8 @@ var express                 = require("express"),
     contriroutes            = require("./routes/contri.routes")    
 
 var app = express();
-mongoose.connect("mongodb://localhost:27017/onlineJudge",{useNewUrlParser:true,useUnifiedTopology: true,useFindAndModify: false});
+// mongoose.connect("mongodb://localhost:27017/onlineJudge",{useNewUrlParser:true,useUnifiedTopology: true,useFindAndModify: false});
+mongoose.connect("mongodb+srv://Arnav:Arnav2000@cluster0-0eldl.mongodb.net/OnlineJudge?retryWrites=true&w=majority",{useNewUrlParser:true,useUnifiedTopology: true,useFindAndModify: false});
 
 app.set('view engine','ejs');
 app.use(express.static(__dirname + '/public'));
