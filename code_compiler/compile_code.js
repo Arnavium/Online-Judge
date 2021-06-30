@@ -1,5 +1,4 @@
 const { execSync, execFileSync } = require("child_process");
-const { resolve } = require("path");
 const path = require("path");
 const fs = require("fs");
 
@@ -44,7 +43,7 @@ function runTestcases(testcases, testcaseIdx, execFilePath, inputFilePath){
         writeToFile(inputFilePath, testcase.input).then(()=>{
             runTestcase(execFilePath, inputFilePath).then((output)=>{
                 if(testcase.output.trim() != output.trim()){
-                    const wrongVerdict = "WA\nTestcase: " + testcaseIdx +" failed.\nExpected Output: " + testcase.output.trim() + "\nActual Output: " + output.trim();
+                    const wrongVerdict = "WA Testcase: " + testcaseIdx +" failed. Expected Output: " + testcase.output.trim() + " Actual Output: " + output.trim();
                     resolve(wrongVerdict);
                 }else{
                     runTestcases(testcases, testcaseIdx+1, execFilePath, inputFilePath).then((data)=>{

@@ -4,7 +4,7 @@ exports.getAll = function(filter){
     return Question.find(filter).exec();
 }
 exports.getOne = function(filter){
-    return Question.findOne(filter).exec();
+    return Question.findOne(filter).populate("testcases").exec();
 }
 exports.addquestion = async function(question){
     const newQuestion = new Question(question);

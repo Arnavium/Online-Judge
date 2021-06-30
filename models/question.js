@@ -15,7 +15,11 @@ var QuestionSchema = new mongoose.Schema({
     author: {
         type: String,
         required: true
-    }
+    },
+    testcases:[{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Testcase'
+    }]
 });
 
 module.exports = mongoose.model("Question",QuestionSchema);
